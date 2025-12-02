@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Patient Monitor – Prototype Widgets</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-left">IVMP</div>
+    <div class="topbar-center">Doe, John – Dynamic Waves</div>
+    <div class="topbar-right">17 Feb 2020 · 17:54</div>
+  </header>
+
+  <main>
+    <h1 class="page-title">Overall Patient Statistics</h1>
+
+    <div id="dashboard" class="dashboard">
+      <div class="widget" draggable="true">
+        <h2>[II] HR bpm</h2>
+        <p class="value big">60</p>
+      </div>
+
+      <div class="widget" draggable="true">
+        <h2>[V1] HR bpm</h2>
+        <p class="value big">60</p>
+      </div>
+
+      <div class="widget" draggable="true">
+        <h2>Pulse bpm</h2>
+        <p class="value big">60</p>
+      </div>
+
+      <div class="widget" draggable="true">
+        <h2>Temp °C</h2>
+        <p class="value big">37.5</p>
+      </div>
+
+      <div class="widget" draggable="true">
+        <h2>Pleth SpO₂ %</h2>
+        <p class="value big">95</p>
+      </div>
+
+      <div class="widget" draggable="true">
+        <h2>Resp rpm</h2>
+        <p class="value big">15</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

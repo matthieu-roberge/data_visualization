@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fetch JSON Test</title>
+</head>
+<body>
+
+  <h1>Check the console 👇</h1>
+
+  <script>
+    // FETCH JSON
+    fetch("temp_data.json")
+      .then(response => response.json())
+      .then(data => {
+        console.log("JSON loaded:", data);
+      })
+      .catch(error => {
+        console.error("Error loading JSON:", error);
+      });
+  </script>
+
+</body>
+</html>

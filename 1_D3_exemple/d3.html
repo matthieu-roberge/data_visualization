@@ -1,0 +1,143 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>D3 Temperature Visualization</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Import D3.js -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 40px;
+      background: #0f2c76;
+    }
+    svg {
+      background: white;
+      border: 1px solid #ddd;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>Temperature Chart (D3.js)</h1>
+
+<div id="charts">
+  <div id="chart"></div>
+  <div id="chart2"></div>
+</div>
+
+<script>
+
+// Load JSON (make sure temp_data.json is in the same folder)
+d3.json("temp_data_2.json").then(data => {
+
+    console.log("Data loaded:", data); // Check in console
+
+    // Convert "0:00" → 0, 1, 2, etc.
+    data.forEach(d => {
+        d.timeValue = +d.time.split(":")[0];
+    });
+
+    // Dimensions
+    const width = 700;
+    const height = 350;
+    const margin = {top: 30, right: 20, bottom: 40, left: 50};
+
+    // Create SVG
+    const svg = d3.select("#chart")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+    // Scales
+    const x = d3.scaleLinear()
+        .domain(d3.extent(data, d => d.timeValue))
+        .range([margin.left, width - margin.right]);
+
+    const y = d3.scaleLinear()
+        .domain([
+          d3.min(data, d => d.temperature) - 1,
+          d3.max(data, d => d.temperature) + 1
+        ])
+        .range([height - margin.bottom, margin.top]);
+
+    // Line generator
+    const line = d3.line()
+        .x(d => x(d.timeValue))
+        .y(d => y(d.temperature));
+
+    // Draw line
+    svg.append("path")
+        .datum(data)
+        .attr("fill", "none")
+        .attr("stroke", "red")
+        .attr("stroke-width", 2)
+        .attr("d", line);
+
+    // Axes
+    svg.append("g")
+        .attr("transform", `translate(0,${height - margin.bottom})`)
+        .call(d3.axisBottom(x));
+
+    svg.append("g")
+        .attr("transform", `translate(${margin.left},0)`)
+        .call(d3.axisLeft(y));
+
+});
+
+// === SECOND CHART (Bar Chart) ===
+
+d3.json("temp_data_2.json").then(data => {
+
+// Convert time like before
+data.forEach(d => {
+    d.timeValue = +d.time.split(":")[0];
+});
+
+const width = 700;
+const height = 350;
+const margin = {top: 30, right: 20, bottom: 40, left: 50};
+
+const svg = d3.select("#chart2")
+    .append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+const x = d3.scaleBand()
+    .domain(data.map(d => d.timeValue))
+    .range([margin.left, width - margin.right])
+    .padding(0.2);
+
+const y = d3.scaleLinear()
+    .domain([0, d3.max(data, d => d.temperature)])
+    .range([height - margin.bottom, margin.top]);
+
+svg.selectAll("rect")
+    .data(data)
+    .enter()
+    .append("rect")
+    .attr("x", d => x(d.timeValue))
+    .attr("y", d => y(d.temperature))
+    .attr("width", x.bandwidth())
+    .attr("height", d => (height - margin.bottom) - y(d.temperature))
+    .attr("fill", "orange");
+
+// Axes
+svg.append("g")
+    .attr("transform", `translate(0,${height - margin.bottom})`)
+    .call(d3.axisBottom(x).tickValues(x.domain().filter(d => d % 5 === 0)));
+
+svg.append("g")
+    .attr("transform", `translate(${margin.left},0)`)
+    .call(d3.axisLeft(y));
+});
+
+</script>
+
+</body>
+</html>

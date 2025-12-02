@@ -1,0 +1,84 @@
+/* --- Reset simple --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+      sans-serif;
+    background: #050608;
+    color: #f5f5f5;
+    min-height: 100vh;
+  }
+  
+  /* --- Top bar --- */
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    background: #050608;
+    border-bottom: 1px solid #222;
+    font-size: 14px;
+    color: #a5abb5;
+  }
+  
+  .page-title {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 24px 24px 12px;
+    color: #ffffff;
+  }
+  
+  /* --- Dashboard grid --- */
+  .dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 0 24px 24px;
+  }
+  
+  /* Chaque widget : petit rectangle gris drag & drop */
+  .widget {
+    flex: 1 1 260px;          /* largeur minimale ≈ 260px, s'adapte à l'écran */
+    min-height: 130px;
+    background: #14161c;
+    border-radius: 18px;
+    padding: 14px 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+    border: 1px solid #222631;
+    cursor: grab;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.12s ease, box-shadow 0.12s ease, border 0.12s ease;
+  }
+  
+  .widget h2 {
+    font-size: 13px;
+    font-weight: 500;
+    color: #a5abb5;
+    margin-bottom: 8px;
+  }
+  
+  .widget .value.big {
+    font-size: 32px;
+    font-weight: 600;
+  }
+  
+  /* Effet quand on attrape le bloc */
+  .widget.dragging {
+    opacity: 0.85;
+    cursor: grabbing;
+    transform: scale(1.02);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.6);
+    border: 1px solid #3f8cff;
+  }
+  
+  /* Optionnel : survol léger */
+  .widget:hover {
+    border-color: #2b3341;
+  }
