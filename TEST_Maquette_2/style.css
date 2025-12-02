@@ -54,7 +54,14 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: transform 0.12s ease, box-shadow 0.12s ease, border 0.12s ease;
+    position: relative;
+    transition:
+    transform 0.30s ease,
+    flex-basis 0.30s ease,
+    width 0.30s ease,
+    height 0.30s ease,
+    box-shadow 0.30s ease,
+    border 0.30s ease;
   }
   
   .widget h2 {
@@ -62,6 +69,7 @@
     font-weight: 500;
     color: #a5abb5;
     margin-bottom: 8px;
+    
   }
   
   .widget .value.big {
@@ -76,9 +84,17 @@
     transform: scale(1.02);
     box-shadow: 0 14px 30px rgba(0, 0, 0, 0.6);
     border: 1px solid #3f8cff;
+    cursor: grabbing;
+    z-index: 10;
+    transition: none;
   }
   
   /* Optionnel : survol léger */
   .widget:hover {
     border-color: #2b3341;
+  }
+
+  .widget.large {
+    flex: 1 1 520px;   /* par ex. 2x plus large */
+    min-height: 200px;
   }
