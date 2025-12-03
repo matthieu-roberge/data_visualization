@@ -1,0 +1,90 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    sans-serif;
+  background: #050608;
+  color: #f5f5f5;
+  min-height: 100vh;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background: #050608;
+  border-bottom: 1px solid #222;
+  font-size: 14px;
+  color: #a5abb5;
+}
+
+.page-title {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 24px 24px 12px;
+  color: #ffffff;
+}
+
+/* --- Dashboard en grille contrôlée en JS --- */
+.dashboard-wrapper {
+  padding: 0 24px 40px;
+}
+
+#dashboard {
+  position: relative;
+  margin: 0 auto;
+  max-width: 1100px;
+  /* la hauteur sera gérée en JS */
+}
+
+.widget {
+  position: absolute;
+  background: #14161c;
+  border-radius: 18px;
+  padding: 14px 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+  border: 1px solid #222631;
+  user-select: none;
+  cursor: grab;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.2s ease,
+    border 0.2s ease;
+  /* largeur & hauteur seront fixées en JS */
+  left: 0;
+  top: 0;
+}
+
+.widget h2 {
+  font-size: 13px;
+  font-weight: 500;
+  color: #a5abb5;
+  margin-bottom: 8px;
+}
+
+.widget .value.big {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.widget.dragging {
+  cursor: grabbing;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.8);
+  border-color: #3f8cff;
+  z-index: 10;
+  /* pendant le drag, on enlève la transition pour suivre la souris en temps réel */
+  transition: none;
+}
+
+.widget.large {
+  /* Exemple : un widget plus grand (double largeur visuelle) */
+  /* On garde la même hauteur par défaut, mais on peut adapter plus tard */
+}

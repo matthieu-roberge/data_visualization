@@ -56,12 +56,12 @@
     justify-content: space-between;
     position: relative;
     transition:
-    transform 0.30s ease,
-    flex-basis 0.30s ease,
-    width 0.30s ease,
-    height 0.30s ease,
-    box-shadow 0.30s ease,
-    border 0.30s ease;
+    transform 0.5s ease,
+    flex-basis 0.5s ease,
+    width 0.5s ease,
+    height 0.5s ease,
+    box-shadow 0.5s ease,
+    border 0.5s ease;
   }
   
   .widget h2 {
