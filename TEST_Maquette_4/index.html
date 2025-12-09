@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Maquette 4 – Widgets redimensionnables</title>
+  <title>Maquette 4.1 – Widgets redimensionnables</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -15,7 +15,7 @@
   </header>
 
   <main>
-    <h1 class="page-title">Overall Patient Statistics – Maquette 4</h1>
+    <h1 class="page-title">Overall Patient Statistics – Maquette 4.1</h1>
 
     <section class="dashboard-wrapper">
       <div id="dashboard">
@@ -84,7 +84,15 @@
           <p class="value big">21°C · Sunny</p>
           <div class="widget-resize-handle"></div>
         </div>
-        
+
+        <div class="widget" data-span="1">
+          <h2>Weather</h2>
+          <p class="value big">21°C · Sunny</p>
+          <div class="widget-resize-handle"></div>
+          <button class="widget-close" aria-label="Fermer le widget">×</button>
+          <!-- le reste du contenu -->
+        </div>
+
       </div>
     </section>
   </main>
