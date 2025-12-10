@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Maquette 4.v3 – Widgets redimensionnables</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <div>IVMP</div>
+    <div>Doe, John – Dynamic Waves</div>
+    <div>17 Feb 2020 · 17:54</div>
+  </header>
+
+  <main>
+    <div class="title-row">
+      <h1 class="page-title">Overall Patient Statistics – Maquette 4.v3</h1>
+      <button class="customize-btn" aria-label="Customize">Customize</button>
+    </div>
+
+    <section class="dashboard-wrapper">
+      <div id="dashboard">
+        <!-- Fixed centered widget -->
+        <div class="widget widget-fixed" data-fixed="true">
+          <!-- Empty content, just a placeholder -->
+        </div>
+        <div class="widget" data-span="3">
+          <h2>[II] HR bpm</h2>
+          <p class="value big">60</p>
+          <div class="widget-resize-handle"></div>
+        </div>
+
+        <div class="widget" data-span="1">
+          <h2>V1 HR bpm</h2>
+          <p class="value big">60</p>
+          <div class="widget-resize-handle"></div>
+        </div>
+
+        <div class="widget" data-span="1">
+          <h2>PULSE</h2>
+          <p class="value big">59</p>
+          <div class="widget-resize-handle"></div>
+        </div>
+
+
+        <div class="widget" data-span="1">
+          <h2>Temp°C</h2>
+          <p class="value big">39°</p>
+          <div class="widget-resize-handle"></div>
+        </div>
+
+        <div class="widget" data-span="3">
+          <h2>SpO2</h2>
+          <p class="value big">95%</p>
+          <div class="widget-resize-handle"></div>
+        </div>
+
+        <div class="widget" data-span="3">
+          <h2>Abp mmHG</h2>
+          <p class="value big">120/70 (91)</p>
+          <div class="widget-resize-handle"></div>
+        </div>
+
+        <div class="widget" data-span="3">
+          <h2>Reso rpm</h2>
+          <p class="value big">16</p>
+          <div class="widget-resize-handle"></div> <!-- end of column 1 -->
+        </div>
+
+        <div class="widget" data-span="2">
+          <h2>[II] HR bpm</h2>
+          <p class="value big">60</p>
+          <div class="widget-resize-handle"></div> <!-- bug here start -->
+        </div>
+
+        <div class="widget" data-span="2">
+          <h2>[II] HR bpm</h2>
+          <p class="value big">60</p>
+          <div class="widget-resize-handle"></div>
+        </div>
+
+        <div class="widget" data-span="2">
+          <h2>[II] HR bpm</h2>
+          <p class="value big">60</p>
+          <div class="widget-resize-handle"></div>
+        </div>
+
+        <div class="widget" data-span="2">
+          <h2>[II] HR bpm</h2>
+          <p class="value big">60</p>
+          <div class="widget-resize-handle"></div>
+        </div>
+
+        <div class="widget" data-span="2">
+          <h2>[II] HR bpm</h2>
+          <p class="value big">60</p>
+          <div class="widget-resize-handle"></div>
+        </div>
+
+        <div class="widget" data-span="2">
+          <h2>[II] HR bpm</h2>
+          <p class="value big">60</p>
+          <div class="widget-resize-handle"></div> <!-- bug end -->
+        </div>
+
+
+
+        <div class="widget" data-span="2">  
+          <h2>[II] HR bpm</h2>
+          <p class="value big">60</p>
+          <div class="widget-resize-handle"></div>  <!-- start of column -->
+        </div>
+
+        <div class="widget" data-span="1">
+          <h2>Temp°C</h2>
+          <p class="value big">39°</p>
+          <div class="widget-resize-handle"></div>
+        </div>
+
+        <div class="widget" data-span="1">
+          <h2>SpO2</h2>
+          <p class="value big">95%</p>
+          <div class="widget-resize-handle"></div>
+        </div>
+
+        <div class="widget" data-span="2">
+          <h2>[II] HR bpm</h2>
+          <p class="value big">60</p>
+          <div class="widget-resize-handle"></div>
+        </div>
+
+        <div class="widget" data-span="3">
+          <h2>Abp mmHG</h2>
+          <p class="value big">120/70 (91)</p>
+          <div class="widget-resize-handle"></div>
+        </div>
+
+        
+
+        
+          
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

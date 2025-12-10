@@ -1,0 +1,242 @@
+/* --- Reset simple --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    sans-serif;
+  background: #050608;
+  color: #f5f5f5;
+  min-height: 100vh;
+}
+
+/* --- Top bar --- */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background: #050608;
+  border-bottom: 1px solid #222;
+  font-size: 14px;
+  color: #a5abb5;
+}
+
+.page-title {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 24px 24px 12px;
+  color: #ffffff;
+}
+
+/* Title row: title on the left, actions on the right */
+.title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 24px;
+}
+
+/* Customize button: filled by default, stroke on hover */
+.customize-btn {
+  background: #505050; /* fill color per spec */
+  color: #ffffff;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  padding: 8px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  outline: none;
+}
+.customize-btn:hover {
+  background: transparent;
+  border-color: #505050; /* stroke on hover */
+  color: #dfe9f5;
+}
+.customize-btn:active {
+  transform: translateY(1px);
+}
+
+/* When static (not editing), make widgets non-interactive */
+.static-mode .widget {
+  pointer-events: none;
+  cursor: default;
+}
+.static-mode .widget-resize-handle {
+  display: none;
+}
+.customize-btn.active {
+  background: rgba(79, 108, 204, 0.12);
+  border-color: #4f6cff;
+  color: #dfe9f5;
+}
+
+/* Delete button inside widgets: hidden when static, visible in editing mode */
+.widget-delete {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  background: rgba(80, 80, 80, 0.85);
+  color: #ffffff;
+  font-size: 20px;
+  line-height: 34px;
+  text-align: center;
+  display: none;
+  cursor: pointer;
+  padding: 0;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.6);
+  z-index: 20;
+  /* Ensure the default position is visually correct */
+  transform: translate(20%, -20%); 
+  transition: transform 120ms ease, background 120ms ease, opacity 120ms ease;
+}
+body:not(.static-mode) .widget-delete {
+  display: block;
+  opacity: 1;
+}
+
+.widget-delete:active {
+  transform: translate(20%, -20%);
+}
+
+/* --- Dashboard --- */
+.dashboard-wrapper {
+  padding: 0 4px 40px;
+}
+
+#dashboard {
+  position: relative;
+  margin: 0 auto;
+  max-width: 1792px;
+  width: 100%;
+  /* la hauteur est gérée en JS */
+}
+
+/* Widget de base */
+.widget {
+  
+  
+  position: absolute;
+  background: #14161c;
+  border-radius: 18px;
+  padding: 14px 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+  border: 1px solid #222631;
+  user-select: none;
+  cursor: grab;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  left: 0;
+  top: 0;
+  transition: transform 0.15s ease, width 0.15s ease, box-shadow 0.2s ease,
+    border 0.2s ease;
+}
+
+.widget h2 {
+  font-size: 13px;
+  font-weight: 500;
+  color: #a5abb5;
+  margin-bottom: 8px;
+}
+
+.widget .value.big {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+/* Drag en cours */
+.widget.dragging {
+  cursor: grabbing;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.8);
+  border-color: #3f8cff;
+  z-index: 10;
+  transition: none;
+}
+
+/* Resize en cours */
+.widget.resizing {
+  cursor: se-resize;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.8);
+  border-color: #4f6cff;
+  z-index: 12;
+}
+
+/* Handle de resize en bas à droite */
+.widget-resize-handle {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  right: 10px;
+  bottom: 10px;
+  border-radius: 4px;
+  border: 2px solid #4f6cff;
+  box-sizing: border-box;
+  cursor: se-resize;
+  opacity: 0.8;
+  background: rgba(12, 24, 48, 0.9);
+}
+
+/* Empty placeholder used in editing mode to add a new widget */
+.widget-empty {
+  position: absolute;
+  background: rgba(80, 80, 80, 0.12);
+  border: 1px dashed rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #dfe9f5;
+  font-size: 18px;
+  z-index: 30; /* above widgets */
+  pointer-events: none; /* default off, enabled only in editing */
+  
+}
+body:not(.static-mode) .widget-empty {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+body:not(.static-mode) .widget-empty .widget-add {
+    pointer-events: auto;
+}
+
+.widget-empty .widget-add {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: #dfe9f5;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Fixed widget - replaces 4th widget in first 3 rows, white stroke, no fill */
+.widget-fixed {
+  position: absolute !important;
+  width: 189px;
+  height: 473px;
+
+  background: url("body_picture.png") center center no-repeat;
+  background-size: contain;
+
+  border: 1px solid #222631 !important;
+  
+  box-shadow: none !important;
+  cursor: default !important;
+  pointer-events: none;
+  z-index: 5;
+  left: 0;
+  top: 0;
+}
