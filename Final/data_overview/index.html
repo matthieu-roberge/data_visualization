@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample HTML Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="math.js" defer></script>
+    <script src="script.js" defer></script>
+  <!-- Defer is must. "Do not execute before entire html loaded". Without defer javascript won't function-->
+</head>
+
+
+<body>
+    <header class="topbar">
+        <div>IVMP</div>
+        <div>Doe, John – Dynamic Waves</div>
+        <div>17 Feb 2020 · 17:54</div>
+    </header>
+    <h1 class="page-title">Overall Patient Statistics </h1>
+    <corpus>
+        <section1>
+            <widget>
+                <top>
+                    <t>[II] HR bpm</t>
+                    <number>
+                        <nr style="color: #00CC00; font-size: 32px; font-weight: 600;">60</nr>
+                        <minmax>
+                            <max style="color: #505050; font-size: 12pt;">120</max>
+                            <min style="color: #505050; font-size: 12pt;">50</min>
+                        </minmax>
+                    </number>
+                </top>
+                <bottom >
+                    <img src="assets/hr2.png" width="100%"/>
+                </bottom>
+            </widget>
+            <w class="box">   
+                <div class="boxlein">
+                    <top style="height:50%; width:100%">
+                        <t>VI HR bpm</t>
+                    </top>
+                    <lower style="height:50%;width:100%; display:flex; justify-content:center;align-items:center;">
+                        <img src="assets/hr6.png" width="90%">
+                    </lower>
+                </div>
+                <div class="boxlein">
+                    <top style="height:50%; width:100%">
+                        <t>Pulse</t>
+                    </top>
+                    <lower style="height:50%;width:100%; display:flex; align-items:center;gap:10px;padding-left: 10px;">
+                        <nr style="color: #ffffff; font-size: 32px; font-weight: 600;;">60</nr>
+                        <minmax>
+                            <max style="color: #505050; font-size: 12pt;">120</max>
+                            <min style="color: #505050; font-size: 12pt;">50</min>
+                        </minmax>
+                    </lower>
+                </div> 
+                <div class="boxlein">
+                    <top style="height:50%; width:100%">
+                        <t>Temp °C</t>
+                    </top>
+                    <lower style="height:50%;width:100%; display:flex; align-items:center;gap:10px;padding-left: 10px;">
+                        <nr style="color: #ffffff; font-size: 32px; font-weight: 600;">37.0</nr>
+                        <minmax>
+                            <max style="color: #505050; font-size: 12pt;">39.0</max>
+                            <min style="color: #505050; font-size: 12pt;">36.0</min>
+                        </minmax>
+                    </lower>
+                </div>
+            </w>
+            <widget>                           
+                <top>
+                    <t>SPO2</t>
+                    <number>
+                        <nr style="color: #23D7FF; font-size: 32px; font-weight: 600;">95</nr>
+                        <minmax>
+                            <max style="color: #505050; font-size: 12pt;">100</max>
+                            <min style="color: #505050; font-size: 12pt;">88</min>
+                        </minmax>
+                    </number>
+                </top>
+                <bottom >
+                    <img src="assets/spo2.png" width="100%"/>
+                </bottom>
+            </widget>
+            <widget>
+                <top>
+                    <t>Abp mmHG</t>
+                    <number>
+                        <nr style="color: #EB4438; font-size: 32px; font-weight: 600;">120/70(91)</nr>
+                        <minmax>
+                            <max style="color: #505050; font-size: 12pt;">160</max>
+                            <min style="color: #505050; font-size: 12pt;">90</min>
+                        </minmax>
+                    </number>
+                </top>
+                <bottom >
+                    <img src="assets/abp.png" width="100%"/>
+                </bottom>
+            </widget>
+            <widget>
+                <top>
+                    <t>Resp rpm</t>
+                    <number>
+                        <nr style="color: #FFD600; font-size: 32px; font-weight: 600;">15</nr>
+                        <minmax>
+                            <max style="color: #505050; font-size: 12pt;">30</max>
+                            <min style="color: #505050; font-size: 12pt;">8</min>
+                        </minmax>
+                    </number>
+                </top>
+                <bottom >
+                    <img src="assets/resp.png" width="100%"/>
+                </bottom>
+            </widget>
+        </section1> 
+
+
+
+
+
+
+        <section2>
+            <div class="section2nav">
+                <wrapper class="row">
+                    <button class="selectionoff" id="overview">Overview</button>
+                    <button class="selection" id="history">History</button> 
+                    <button class="selectionoff" id="highlight">Highlights</button> 
+                    <button class="selectionoff" id="wave">Trends</button> 
+                    <button class="selectionoff" id="settings">Settings</button>   
+                </wrapper>     
+                <button class="filteroff" style="width:60px">X</button>
+            </div>
+            <div class="section2head">
+                <div class="headtitle" style="font-size:24"> 
+                        <h3>[V1] HR (Heart Rate) bpm</h3>  </div>
+                <div class="headtrends"  style="display:none;">  
+                    <div class="rowlower" style="align-items: center; gap:180px; justify-content: space-between;">
+                        <div class="rowlower" id="filterer">
+                            <button class="filteroff">Intvl: 1 min</button>
+                            <button class="filter">Intvl: 5 min</button> 
+                            <button class="filteroff">Intvl: 30 min</button> 
+                            <button class="filteroff">Intvl: 1 hour</button> 
+                        </div>
+                        <button class="markbutton">Mark</button>
+                    </div>
+                    <timecontainer>
+                        <div class="row" style="justify-content: space-between; width:100%">
+                            <time>16:00</time>
+                            <time>16:05</time>
+                            <time>16:10</time>
+                            <time>16:15</time>
+                            <time>16:20</time>
+                            <time>16:25</time>
+                        </div>
+                        <div id="markcontainer"></div>
+                    </timecontainer>
+                </div>
+            </div>
+
+            <div id="overviewwrap" class="wrap" style="display:none;">
+                <img src="assets/overview.png">
+            </div>
+            <div id="historywrap" class="wrap" >
+                <div class="historywidget widgetdeactivated">
+                    <g class="historynumber">91</g>
+                    <div class="historygraph" style="background-image: url(assets/irlhr6.png);"></div>
+                    <div class="historynumbertime">17:00</div>
+                    <button class="markbutton" id="historybutton">Mark</button>
+                </div>
+                <div class="historywidget">
+                    <div class="historynumber">88</div>
+                    <div class="historygraph"></div>
+                    <div class="historynumbertime">16:55</div>
+                    <button class="markbutton" id="historybutton">Mark</button>
+                </div>
+                <div class="historywidget">
+                    <div class="historynumber">86</div>
+                    <div class="historygraph"></div>
+                    <div class="historynumbertime">16:50</div>
+                    <button class="markbutton" id="historybutton">Mark</button>
+                </div>
+                <div class="historywidget">
+                    <div class="historynumber">70</div>
+                    <div class="historygraph"></div>
+                    <div class="historynumbertime">16:45</div>
+                    <button class="markbutton" id="historybutton">Mark</button>
+                </div>
+                <div class="historywidget">
+                    <r class="historynumber">50</r>
+                    <div class="historygraph"></div>
+                    <div class="historynumbertime">16:40</div>
+                    <button class="markbutton" id="historybutton">Mark</button>
+                </div>
+                <div class="historywidget">
+                    <div class="historynumber">66</div>
+                    <div class="historygraph"></div>
+                    <div class="historynumbertime">16:35</div>
+                    <button class="markbutton" id="historybutton">Mark</button>
+                </div>
+            </div>
+
+            <div id="highlightwrap" class="wrap" style="display:none;">
+                <div class="historywidget widgetdeactivated">
+                    <g class="historynumber">91</g>
+                    <div class="historygraph" style="background-image: url(assets/irlhr6.png);"></div>
+                    <div class="historynumbertime">16:40</div>
+                    <button class="markbutton" id="historybutton">Mark</button>
+                </div>
+                <div class="historywidget widgetdeactivated2">
+                    <r class="historynumber">50</r>
+                    <div class="historygraph"></div>
+                    <div class="historynumbertime">16:40</div>
+                    <button class="markbutton" id="historybutton">Mark</button>
+                </div>
+                <div class="historywidget">
+                    <o class="historynumber">80</o>
+                    <div class="historygraph"></div>
+                    <div class="historynumbertime">10:35</div>
+                    <button class="markbutton active" id="byebye">Unmark</button>
+                </div>
+                <div class="historywidget widgetdeactivated2">
+                    <r class="historynumber">130</r>
+                    <div class="historygraph"></div>
+                    <div class="historynumbertime">06:40</div>
+                    <button class="markbutton" id="historybutton">Mark</button>
+                </div>
+            </div>
+
+            <div id="wavewrap" class="wrap" style="display:none">
+                <div class="waveform" id="waveform" tabindex="0">
+                    <div class="wave-line" id="waveLine"></div> 
+                </div>
+                <buttondiv>
+                    <button class="footerprev">  <img src="assets/chevron-left.png"> </button>
+                    <button class="footernext">  <img src="assets/chevron-right.png"> </button>
+                </buttondiv>
+            </div>
+            
+            
+        </section2>
+
+    </corpus>
+    </body>
+</html>
